@@ -12,6 +12,11 @@
         android:theme="@style/Theme.NoteApp.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivityds"
+            android:exported="false"
+            android:label="@string/title_activity_main_activityds"
+            android:theme="@style/Theme.NoteApp.NoActionBar.NoActionBar" />
+        <activity
             android:name=".View.UpdateUser"
             android:exported="false" />
         <activity

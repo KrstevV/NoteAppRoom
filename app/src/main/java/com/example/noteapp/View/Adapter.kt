@@ -14,22 +14,16 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class Adapter(private var note: MutableList<Note>, val listener: OnClickListener, var activity: MainActivity) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class Adapter(private var note: MutableList<Note>,val listener: OnClickListener) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
-
-
-    class ViewHolder (itemView: View, listener: OnClickListener) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View, listener: OnClickListener) : RecyclerView.ViewHolder(itemView) {
         var text1 = itemView.findViewById<TextView>(R.id.textView)
         var text2 = itemView.findViewById<TextView>(R.id.textView2)
         var btnDelete = itemView.findViewById<Button>(R.id.button2)
         val layout = itemView.findViewById<ConstraintLayout>(R.id.item_layout)
         var dateText = itemView.findViewById<TextView>(R.id.textViewDate)
 
-
-
     }
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
         return ViewHolder(view, listener)
@@ -41,45 +35,26 @@ class Adapter(private var note: MutableList<Note>, val listener: OnClickListener
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var currentPosition = note.get(position)
-            holder.text1.text = currentPosition.note
-            holder.text2.text = currentPosition.txt
-            holder.dateText.text = currentPosition.Date
-
-
-
-
-        holder.btnDelete.setOnClickListener {
-
-            listener.onClickListener(currentPosition)
-
-
-        }
+        holder.text1.text = currentPosition.note
+        holder.text2.text = currentPosition.txt
+        holder.dateText.text = currentPosition.Date
 
         holder.layout.setOnClickListener {
-
-            listener.updateOnClickListener(currentPosition)
-
-
+             listener.updateOnClickListener(currentPosition)
         }
-
-
+        holder.btnDelete.setOnClickListener {
+           listener.deleteOnClickListener(currentPosition)
+        }
     }
-
-    fun setNotesList(notes : MutableList<Note>) {
+    fun setNotesList(notes: MutableList<Note>) {
         this.note = notes
         notifyDataSetChanged()
     }
-
-    fun getCurrentDate(): String {
-        val currentDate = Calendar.getInstance().time
-        val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm")
-        return formatter.format(currentDate)
-    }
+}
 
 
 
 
-    }
 
 
 

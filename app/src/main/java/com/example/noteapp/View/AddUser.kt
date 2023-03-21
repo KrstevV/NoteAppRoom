@@ -17,20 +17,16 @@ import java.util.*
 
 class AddUser : AppCompatActivity() {
     lateinit var binding: ActivityAddUserBinding
-    lateinit var noteDao: NoteDao
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.button.setOnClickListener {
             addNote()
         }
-
         binding.backButton2.setOnClickListener {
             finish()
         }
-
     }
 
     fun addNote() {

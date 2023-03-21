@@ -29,7 +29,6 @@ class UpdateUser : AppCompatActivity() {
         noteName.setText(currentNoteName)
         email2.setText(currentNoteTxt)
 
-
         updateBinding.buttonUpdate.setOnClickListener {
             updateNote()
         }
@@ -71,10 +70,7 @@ class UpdateUser : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
-
-
     }
-
     private fun getCurrentDate(): String {
         val currentDate = Calendar.getInstance().time
         val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm")
